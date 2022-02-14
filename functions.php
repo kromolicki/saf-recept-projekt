@@ -453,6 +453,296 @@ endif;
 // Open links in comments in new tab
 
 
+// disable gutenberg
+add_filter('use_block_editor_for_post', '__return_false', 100);
+add_filter('use_block_editor_for_post_type', '__return_false', 100);
+
 // acf-pro
 //require get_template_directory_uri() . '/inc/acf-loader.php';
 require dirname( __FILE__ ) . '/inc/acf-loader.php';
+
+// ACF field groups
+if( function_exists('acf_add_local_field_group') ):
+
+    acf_add_local_field_group(array(
+        'key' => 'group_6209e0c21716d',
+        'title' => 'bs_recipe',
+        'fields' => array(
+            array(
+                'key' => 'field_6209e0edc666e',
+                'label' => 'Title',
+                'name' => 'title',
+                'type' => 'text',
+                'instructions' => 'Recipe title i.e - Apple Pie, Chocolate Dipped Donuts.',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => 'Apple Pie, Donuts etc...',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_6209e111c666f',
+                'label' => 'Content',
+                'name' => 'content',
+                'type' => 'textarea',
+                'instructions' => 'Description of our recipe',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 12,
+                'new_lines' => '',
+            ),
+            array(
+                'key' => 'field_6209e174c6671',
+                'label' => 'Featured Image',
+                'name' => 'featured_image',
+                'type' => 'image',
+                'instructions' => 'Add the featured image',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'url',
+                'preview_size' => 'large',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_6209e196c6672',
+                'label' => 'Servings',
+                'name' => 'servings',
+                'type' => 'number',
+                'instructions' => 'Amount of servings (i.e 4, 8, 12)',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => '',
+                'max' => '',
+                'step' => '',
+            ),
+            array(
+                'key' => 'field_6209e1a6c6673',
+                'label' => 'Ingredients',
+                'name' => 'ingredients',
+                'type' => 'repeater',
+                'instructions' => 'List our ingredients, simply press [Add ingredient] then write each element of your recipe.
+    Example: 1 Apple',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'collapsed' => 'field_6209e1c0c6674',
+                'min' => 1,
+                'max' => 0,
+                'layout' => 'table',
+                'button_label' => 'Add ingridient',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_6209e1c0c6674',
+                        'label' => 'Ingredients',
+                        'name' => 'ingredients',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_6209e1f2c6675',
+                'label' => 'Instructions',
+                'name' => 'instructions',
+                'type' => 'textarea',
+                'instructions' => 'Describe how it\'s made step by step. 
+    Example:
+    
+    Whip the eggs for 30 seconds
+    Make dough from oats then inside the bowl for 5 minutes
+    Throw it in the oven for 10 minutes
+    Done!',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'new_lines' => 'wpautop',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'bs_recipie',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => array(
+            0 => 'the_content',
+            1 => 'excerpt',
+            2 => 'discussion',
+            3 => 'comments',
+            4 => 'revisions',
+            5 => 'slug',
+            6 => 'author',
+            7 => 'format',
+            8 => 'page_attributes',
+            9 => 'featured_image',
+            10 => 'tags',
+            11 => 'send-trackbacks',
+        ),
+        'active' => true,
+        'description' => '',
+    ));
+    
+    endif;
+
+
+// CPT
+function cptui_register_my_cpts_bs_recipie() {
+
+	/**
+	 * Post Type: Recipes.
+	 */
+
+	$labels = [
+		"name" => __( "Recipes", "bootscore" ),
+		"singular_name" => __( "Recipe", "bootscore" ),
+	];
+
+	$args = [
+		"label" => __( "Recipes", "bootscore" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => [ "slug" => "bs_recipie", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "editor", "thumbnail" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "bs_recipie", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_bs_recipie' );
+function cptui_register_my_taxes_recipe_category() {
+
+	/**
+	 * Taxonomy: Recipe Category.
+	 */
+
+	$labels = [
+		"name" => __( "Recipe Category", "bootscore" ),
+		"singular_name" => __( "Recipe Category", "bootscore" ),
+		"menu_name" => __( "Recipe categories", "bootscore" ),
+		"all_items" => __( "All recipe categories", "bootscore" ),
+		"edit_item" => __( "Edit recipe category", "bootscore" ),
+		"view_item" => __( "View recipe category", "bootscore" ),
+		"update_item" => __( "Update recipe category", "bootscore" ),
+		"add_new_item" => __( "Add new recipe category", "bootscore" ),
+		"new_item_name" => __( "Add new recipe category name", "bootscore" ),
+		"parent_item" => __( "Parent recipe category", "bootscore" ),
+		"parent_item_colon" => __( "Parent recipe categories", "bootscore" ),
+		"search_items" => __( "Search recipe categories", "bootscore" ),
+		"popular_items" => __( "Popular recipe categories", "bootscore" ),
+		"separate_items_with_commas" => __( "Separate recipe categories", "bootscore" ),
+		"add_or_remove_items" => __( "Add or remove recipe categories", "bootscore" ),
+		"choose_from_most_used" => __( "Choose from the most used recipe categories", "bootscore" ),
+		"not_found" => __( "No recipe categories found", "bootscore" ),
+		"no_terms" => __( "No recipe categories", "bootscore" ),
+		"items_list_navigation" => __( "Recipe category list nagivation", "bootscore" ),
+		"items_list" => __( "Recipe category list", "bootscore" ),
+		"back_to_items" => __( "Back to recipe categories", "bootscore" ),
+	];
+
+	
+	$args = [
+		"label" => __( "Recipe Category", "bootscore" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'recipe_category', 'with_front' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "recipe_category",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "recipe_category", [ "bs_recipie" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_recipe_category' );
