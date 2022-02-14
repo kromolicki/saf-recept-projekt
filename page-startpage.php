@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php the_title(); ?></h5>
                         <p class="card-text"><?php the_field('content');?></p>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-primary">Go somewhere</a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-primary">View recipe</a>
                     </div>
                 </div>
                 </div>

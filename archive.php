@@ -1,58 +1,88 @@
 <?php
-	/**
-	 * The template for displaying archive pages
-	 *
-	 * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
-	 *
-	 * @package Bootscore
-	 */
-	
-	get_header();
-	?>
+
+/**
+ * The template for displaying archive pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Bootscore
+ */
+
+get_header();
+?>
 
 <div id="content" class="site-content container py-5 mt-5">
-    <div id="primary" class="content-area">
-        
-        <!-- Hook to add something nice -->
-        <?php bs_after_primary(); ?>  
+  <div id="primary" class="content-area">
 
-        <div class="row">
-            <div class="col">
+    <!-- Hook to add something nice -->
+    <?php bs_after_primary(); ?>
 
-                <main id="main" class="site-main">
+    <div class="row">
+      <div class="col">
 
-                    <!-- Title & Description -->
-                    <header class="page-header mb-4">
-                        <h1><?php the_archive_title(); ?></h1>
-                        <?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
-                    </header>
+        <main id="main" class="site-main">
 
-                    <?php 
-                    $loop = new WP_Query( array( 'post_type' => 'graves', 'posts_per_page' => 10 ) ); 
+          <!-- Title & Description -->
+          <header class="page-header mb-4">
+            <h1><?php the_archive_title(); ?></h1>
+            <?php the_archive_description('<div class="archive-description">', '</div>'); ?>
+          </header>
 
-                    while ( $loop->have_posts() ) : $loop->the_post();
+          <!-- Grid Layout -->
+          <?php if (have_posts()) : ?>
+            <?php while (have_posts()) : the_post(); ?>
+              <div class="card horizontal mb-4 col-sm-12 col-md-6 col-lg-3">
+                <div class="row">
+                  <!-- Featured Image-->
+                  <div class="col">
+                  <img src="<?php the_field('featured_image');?>">
+                    <div class="card-body">
 
-                    the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
-                    ?>
+                      <?php bootscore_category_badge(); ?>
 
-                        <div class="entry-content">
-                            <?php the_content(); ?>
-                        </div>
-
-                    <?php endwhile; ?>
-
-                    <!-- Pagination -->
-                    <div>
-                        <?php bootscore_pagination(); ?>
+                      <!-- Title -->
+                      <h2 class="blog-post-title">
+                        <a href="<?php the_permalink(); ?>">
+                          <?php the_title(); ?>
+                        </a>
+                      </h2>
+                      <!-- Meta -->
+                      <?php if ('post' === get_post_type()) : ?>
+                        <small class="text-muted mb-2">
+                          <?php
+                          bootscore_date();
+                          bootscore_author();
+                          bootscore_comments();
+                          bootscore_edit();
+                          ?>
+                        </small>
+                      <?php endif; ?>
+                      <!-- Excerpt & Read more -->
+                      <div class="card-text mt-auto">
+                        <?php the_excerpt(); ?> <a class="read-more" href="<?php the_permalink(); ?>"><?php _e('See recipe »', 'bootscore'); ?></a>
+                      </div>
+                      <!-- Tags -->
+                      <?php bootscore_tags(); ?>
                     </div>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          <?php endif; ?>
 
-                </main><!-- #main -->
+          <!-- Pagination -->
+          <div>
+            <?php bootscore_pagination(); ?>
+          </div>
 
-            </div><!-- col -->
+        </main><!-- #main -->
 
-        </div><!-- row -->
+      </div><!-- col -->
 
-    </div><!-- #primary -->
+      <?php get_sidebar(); ?>
+    </div><!-- row -->
+
+  </div><!-- #primary -->
 </div><!-- #content -->
 
 <?php
