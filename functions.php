@@ -452,3 +452,7 @@ if ( ! function_exists( 'bs_comment_links_in_new_tab' ) ) :
 endif;
 // Open links in comments in new tab
 
+
+// acf-pro
+//require get_template_directory_uri() . '/inc/acf-loader.php';
+require dirname( __FILE__ ) . '/inc/acf-loader.php';
