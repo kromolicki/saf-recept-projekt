@@ -23,7 +23,7 @@
         <!-- Hook to add something nice -->
         <?php bs_after_primary(); ?>
         <div class="mb-5 mt-3">
-            <h1>Find the leading recipies online!</h1>
+            <h1><?php _e( 'Find the leading recipies online!', 'bootscore' );?></h1>
             <div class="search_form mt-3 mb-3"><?php get_search_form(); ?></div>
             <p><small>or maybe just pick..</small></p>
             <div class="tag_cloud">
@@ -39,7 +39,7 @@
 
             <header class="entry-header">
                 <div class="categories mb-5">
-                <h3>Recipe categories</h3>
+                <h3><?php _e( 'View recipe', 'bootscore' );?></h3>
                 <hr>
                 <?php
                 $args = array(
@@ -60,7 +60,7 @@
                 ?>
                 </div>
                 <!-- Title -->
-                <h3>Latest recipes</h3>
+                <h3><?php __( 'Latest Recipes', 'bootscore' );?></h3>
                 <hr>
                 <?php
                 $args = array('post_type' =>  'bs_recipie' ); 
@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php the_title(); ?></h5>
                         <p class="card-text"><?php the_field('content');?></p>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-primary">View recipe</a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php _e( 'View recipe', 'bootscore' );?></a>
                     </div>
                 </div>
                 </div>

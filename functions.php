@@ -745,3 +745,11 @@ function cptui_register_my_taxes_recipe_category() {
 	register_taxonomy( "recipe_category", [ "bs_recipie" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_recipe_category' );
+
+
+// adding translation support for bootscore
+function bootscore_textdomain() {
+    load_theme_textdomain( 'bootscore', get_template_directory() . '/languages' );
+    
+}
+add_action( 'init', 'bootscore_textdomain' );
